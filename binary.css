@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+button {
+    margin: 30px;
+}
+
+#tb, #again, #bt{
+    width: 200px;
+    height: 70px;
+    background-color: #00ffc3;
+}
+
+#home, #return {
+    background-color: red;
+    width: 200px;
+    height: 70px;
+}

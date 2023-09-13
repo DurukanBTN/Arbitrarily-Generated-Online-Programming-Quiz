@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link href="language.css" rel="stylesheet">
+        <title>Language Test</title>
+        <body>
+            <div>
+                <img id='img' src="photos/code.gif">
+            </div>
+            <div>
+                <button id = 'quit'>Return To Main Page</button>
+            </div>
+            <div>
+                <button id='again'>Play Again</button>
+            </div>
+            <div>
+                Which programming language does this syntax belong to:
+            </div>
+            <div>
+                <p id='paragraph'>
+
+                </p>
+            </div>
+            <div>
+                <button id='0'>CSS</button>
+            </div>
+            <div>
+                <button id='1'>SQL</button>
+            </div>
+            <div>
+                <button id='2'>C, C++</button>
+            </div>
+            <div>
+                <button id='3'>Python</button>
+            </div>
+            <div>
+                <button id='4'>JavaScript</button>
+            </div>
+        </body>
+    <script>
+    function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+        var no;
+        var html = ['<button id="again">Press to Play Again</button>', '<button id="quit">Press to quit to main menu</button>', '<button id="refresh">Press to refresh the page</button>', '<html lang="en">', '<head></head>', '<meta charset="UTF-8">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<link rel="stylesheet" href="style.css">', '<img src="img/myimage/png" alt="My Image">', '<a href="https://link.com">The Link</a>', 'HTML'];
+        var css = ['background-color: black;', 'text-align: center;', 'color: white;', 'margin: 30px;', 'width: 200px;', 'height: 70px;', 'background-color: #00ffc3;', 'background-color: red;', 'line-height: 2;', 'font-size: 1.5rem;', 'font-weight: bold;', 'color: black;', 'CSS'];
+        var sql = ['SELECT name, einwohner, hauptstadt FROM land ORDER BY einwohner', 'SELECT elephant FROM animals WHERE id IN organisms', 'SELECT description FROM crime_scene_reports WHERE month = 7 AND day = 28 AND year = 2020 AND street = "Chamberlin Street";', 'SELECT transcript FROM interviews WHERE month = 7 AND day = 28 AND year = 2020;', 'SELECT activity, license_plate FROM courthouse_security_logs WHERE month = 7 AND day = 28 AND year = 2020 AND hour = 10 AND minute <= 25 AND minute >= 15;', 'SELECT account_number, amount FROM atm_transactions WHERE atm_location = "Fifer Street" AND year = 2020 AND transaction_type LIKE "%withdraw%" AND month = 7 AND day = 28;', 'SELECT airports.city, airports.full_name, flights.hour, flights.minute FROM airports JOIN flights ON airports.id = flights.destination_airport_id WHERE origin_airport_id IN (SELECT id FROM airports WHERE city = "Fiftyville") AND year = 2020 AND month = 7 AND day = 29 ORDER BY flights.hour, flights.minute;', 'SQL'];
+        var C = ['int main(void)', 'fptr = fopen("program.txt", "w");', 'fclose(fptr);', 'scanf("%f", &s.marks);', 'free(data);', 'void display(int mult[][10], int rowFirst, int columnSecond);', 'fgets(line, sizeof(line), stdin);', 'char line[150];', 'C, C++'];
+        var python = ['for j in range(1, 9, 1):', 'def strr(dna, strr):', 'if __name__ == "__main__":', 'with open(sys.argv[1]) as f: reader = csv.DictReader(f)', 'strsml = {1: "AGATC", 2: "AATG", 3: "TATC"}', 'Python'];
+        var javascript = ['document.getElementById("homebutton").style.visibility = "hidden";', 'window.location.href = "https://www.youtube.com/";', 'document.getElementById(b).removeEventListener(\'click\', correct);', 'document.getElementById(a).addEventListener(\'click\', wrong);', 'document.getElementById(a).innerHTML = \'hello\';', 'document.getElementById(\'a\').style.width = \'200px\';', 'JavaScript'];
+        var shuffle = [['background-color: black;', 'text-align: center;', 'color: white;', 'margin: 30px;', 'width: 200px;', 'height: 70px;', 'background-color: #00ffc3;', 'background-color: red;', 'line-height: 2;', 'font-size: 1.5rem;',
+        'font-weight: bold;', 'color: black;', 'CSS'], ['SELECT name, einwohner, hauptstadt FROM land ORDER BY einwohner', 'SELECT elephant FROM animals WHERE id IN organisms',
+        'SELECT description FROM crime_scene_reports WHERE month = 7 AND day = 28 AND year = 2020 AND street = "Chamberlin Street";', 'SELECT transcript FROM interviews WHERE month = 7 AND day = 28 AND year = 2020;',
+        'SELECT activity, license_plate FROM courthouse_security_logs WHERE month = 7 AND day = 28 AND year = 2020 AND hour = 10 AND minute <= 25 AND minute >= 15;',
+        'SELECT account_number, amount FROM atm_transactions WHERE atm_location = "Fifer Street" AND year = 2020 AND transaction_type LIKE "%withdraw%" AND month = 7 AND day = 28;',
+        'SELECT airports.city, airports.full_name, flights.hour, flights.minute FROM airports JOIN flights ON airports.id = flights.destination_airport_id WHERE origin_airport_id IN (SELECT id FROM airports WHERE city = "Fiftyville") AND year = 2020 AND month = 7 AND day = 29 ORDER BY flights.hour, flights.minute;',
+        'SQL'], ['int main(void)', 'fptr = fopen("program.txt", "w");', 'fclose(fptr);', 'scanf("%f", &s.marks);', 'free(data);', 'void display(int mult[][10], int rowFirst, int columnSecond);', 'fgets(line, sizeof(line), stdin);',
+        'char line[150];', 'C, C++'], ['for j in range(1, 9, 1):', 'def strr(dna, strr):', 'if __name__ == "__main__":', 'with open(sys.argv[1]) as f: reader = csv.DictReader(f)', 'strsml = {1: "AGATC", 2: "AATG", 3: "TATC"}', 'Python'],
+        ['document.getElementById("homebutton").style.visibility = "hidden";', 'window.location.href = "https://www.youtube.com/";', 'document.getElementById(b).removeEventListener(\'click\', correct);',
+        'document.getElementById(a).addEventListener(\'click\', wrong);', 'document.getElementById(a).innerHTML = \'hello\';', 'document.getElementById(\'a\').style.width = \'200px\';', 'JavaScript']];
+
+        function correct() {
+            document.getElementById(no).style.backgroundColor = 'green';
+            for (var j = 0; j < 5; j++) {
+                if (j != no) {
+                    document.getElementById(j).style.visibility = 'hidden';
+                }
+            }
+            for (var j = 0; j < 5; j++) {
+                if (j != no) {
+                    document.getElementById(j).removeEventListener('click', wrong);
+                }
+                else {
+                    document.getElementById(j).removeEventListener('click', correct);
+                }
+            }
+            document.getElementById('again').style.visibility = 'visible';
+        }
+
+        function wrong() {
+            document.getElementById(no).style.backgroundColor = 'green';
+            for (var j = 0; j < 5; j++) {
+                if (j != no) {
+                    document.getElementById(j).style.backgroundColor = 'red';
+                }
+            }
+            for (var j = 0; j < 5; j++) {
+                if (j != no) {
+                    document.getElementById(j).removeEventListener('click', wrong);
+                }
+                else {
+                    document.getElementById(j).removeEventListener('click', correct);
+                }
+            }
+            document.getElementById('again').style.visibility = 'visible';
+        }
+
+        function start() {
+            document.getElementById('again').style.visibility = 'hidden';
+            no = Math.floor(Math.random() * 5);
+            document.getElementById('paragraph').innerHTML = shuffle[no][Math.floor(Math.random() * (shuffle[no].length - 1))];
+            for (var i = 0; i < 5; i++) {
+                document.getElementById(i).style.backgroundColor = '#00ffc3';
+                document.getElementById(i).style.visibility = 'visible';
+                if (i === no) {
+                    document.getElementById(i).addEventListener('click', correct);
+                }
+                else {
+                    document.getElementById(i).addEventListener('click', wrong);
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', start);
+        document.getElementById('again').addEventListener('click', start);
+        document.getElementById('quit').addEventListener('click', function() {
+            window.location.href = 'https://ide-ebaec32673104e9fa6444948c6d91b11-8080.cs50.ws/main.html';
+        });
+    </script>
+    </head>
+
+</html>

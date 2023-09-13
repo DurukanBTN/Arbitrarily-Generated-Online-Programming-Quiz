@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link href="binary2.css" rel="stylesheet">
+        <title>Binary System Test</title>
+        <body>
+                <div>
+                    <img src='photos/code3.gif'>
+                </div>
+                <div>
+                    <button id='return'>
+                        Return to home page
+                    </button>
+                </div>
+                <div>
+                    <button id = 'tb'>
+                        Try binary to text test
+                    </button>
+                </div>
+                <div>
+                    <button id= 'again'>
+                        Play again
+                    </button>
+                </div>
+            <p id='paragraph'>
+
+            </p>
+            <div>
+                <button id='1'>
+
+                </button>
+            </div>
+            <div>
+                <button id='2'>
+
+                </button>
+            </div>
+            <div>
+                <button id='3'>
+
+                </button>
+            </div>
+            <div>
+                <button id='4'>
+
+                </button>
+            </div>
+            <div>
+                <button id='5'>
+
+                </button>
+            </div>
+        </body>
+    <script>
+    var no;
+    function text2Binary(string) {
+        return string.split('').map(function (char) {
+            return char.charCodeAt(0).toString(2);
+        }).join(' ');
+    }
+
+    function binaryAgent(str) {
+
+        var newBin = str.split(" ");
+        var binCode = [];
+
+        for (var i = 0; i < newBin.length; i++) {
+            binCode.push(String.fromCharCode(parseInt(newBin[i], 2)));
+          }
+        return binCode.join("");
+    }
+
+    function randombi(length) {
+        var bistring = '';
+        for (var i = 0; i < length; i++) {
+            var x = Math.floor(Math.random() * 94) + 33;
+            var x2 = x.toString(2);
+            if (i > 0) {
+                bistring += ' ';
+            }
+            var len = x2.length;
+            while (len < 8) {
+                bistring += '0';
+                len++;
+            }
+            bistring += x2;
+        }
+        return bistring;
+    }
+
+    function wrong() {
+        for (var b = 1; b < 6; b++) {
+            if (b != no) {
+                document.getElementById(b).style.backgroundColor = 'red';
+            }
+            else {
+                document.getElementById(b).style.backgroundColor = 'green';
+            }
+        }
+        for (b = 1; b < 6; b++) {
+            if (b != no) {
+                document.getElementById(b).removeEventListener('click', wrong);
+            }
+            else {
+                document.getElementById(b).removeEventListener('click', correct);
+            }
+        }
+    document.getElementById('again').style.visibility = 'visible';
+    }
+
+    function correct() {
+        for (var b = 1; b < 6; b++) {
+            if (b != no) {
+                document.getElementById(b).style.visibility = 'hidden';
+            }
+            else {
+                document.getElementById(b).style.backgroundColor = 'green';
+            }
+        }
+        for (b = 1; b < 6; b++) {
+            if (b != no) {
+                document.getElementById(b).removeEventListener('click', wrong);
+            }
+            else {
+                document.getElementById(b).removeEventListener('click', correct);
+            }
+        }
+    document.getElementById('again').style.visibility = 'visible';
+    }
+
+    function start() {
+        for (var x = 1; x < 6; x++) {
+            document.getElementById(x).style.visibility = 'visible';
+            document.getElementById(x).style.backgroundColor = 'white';
+            document.getElementById(x).style.height = '40px';
+            document.getElementById(x).style.backgroundColor = '#decf31';
+        }
+        document.getElementById('again').addEventListener('click', start);
+        document.getElementById('again').style.visibility = 'hidden';
+        var length = Math.ceil(Math.random() * 10);
+        var mainbi = randombi(length);
+        var text = binaryAgent(mainbi);
+        document.getElementById('paragraph').innerHTML = 'Choose the box that represents the text: ' + text;
+        for (var j = 1; j < 6; j++) {
+            document.getElementById(j).innerHTML = randombi(length);
+        }
+        no = Math.ceil(Math.random() * 5);
+        document.getElementById(no).innerHTML = mainbi;
+        for (var a = 1; a < 6; a++) {
+            if (a != no) {
+                document.getElementById(a).addEventListener('click', wrong);
+            }
+            else {
+                document.getElementById(a).addEventListener('click', correct);
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', start);
+
+    document.getElementById('return').addEventListener('click', function() {
+        window.location.href = 'https://ide-ebaec32673104e9fa6444948c6d91b11-8080.cs50.ws/main.html';
+    });
+
+    document.getElementById('tb').addEventListener('click', function() {
+        window.location.href = 'https://ide-ebaec32673104e9fa6444948c6d91b11-8080.cs50.ws/binary1.html';
+    });
+
+    </script>
+    </head>
+
+</html>

@@ -1,0 +1,20 @@
+button {
+    margin: 30px;
+    width: 200px;
+    height: 70px;
+    background-color: #00ffc3;
+}
+
+#quit {
+    background-color: #ff0000;
+}
+
+#again {
+    background-color: #066bc4;
+}
+
+body {
+    background-color: black;
+    text-align: center;
+    color: white;
+}
